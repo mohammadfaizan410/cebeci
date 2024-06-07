@@ -7,7 +7,10 @@ export default function Categories() {
         <div className={styles.container}>
            {data.map((category, index) => (
                 <div key={index} className={styles.category}>
-                    <Link href="/products">
+                    <Link href={{
+                                pathname: "/products",
+                                query: { categoryName: category.CategoryName }
+                            }}>
                         <img className={styles.image} src={category.products.length > 0 ? category.products[0].image_url : 'https://www.atabuttons.com/image/cache/catalog/kategoriler/stainless-accessories-ata-buttons-500x500.jpg.webp'
                         } alt="category" />
                     </Link>

@@ -2,11 +2,15 @@
 import data from '@/public/data.json';
 import styles from './products.module.css';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+
 
 export default function ProductsUI() {
-    const [selectedCategory, setSelectedCategory] = useState('All');
+    const searchParams = useSearchParams();
+    const category = searchParams.get('categoryName');
+    const [selectedCategory, setSelectedCategory] = useState(category || 'All');
     const [products, setProducts] = useState(data.map((category) => category.products));
     const [prodCount, setProdCount] = useState(0);
     useEffect(() => {
