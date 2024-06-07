@@ -2,7 +2,7 @@
 import data from '@/public/data.json';
 import styles from './products.module.css';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
@@ -32,6 +32,10 @@ export default function ProductsUI() {
 
     return (
         <>
+        <Suspense
+        fallback={<h1>Loading...</h1>}
+        >
+
         <div className={styles.container}>
             <div className={styles.categoryPicker}>
                 <h3>Categories</h3>
@@ -43,9 +47,9 @@ export default function ProductsUI() {
                 className={selectedCategory === category.CategoryName ? styles.selected : ''}
                 onClick={
                     () => {
-
+                        
                         setSelectedCategory(category.CategoryName)}
-                }>
+                        }>
                     <button>{category.CategoryName}</button>
                 </li>
             ))}
@@ -59,17 +63,17 @@ export default function ProductsUI() {
                     <option value='All' >All</option>
                     {data.map((category) => (
                         <option key={category.CategoryName} value={category.CategoryName}>{category.CategoryName}</option>
-                    ))}
+                        ))}
                 </select>
             </div>
             <div className={styles.products}>
 
                 {
                     prodCount === 0 ? <h1>No products found</h1> :
-                products.map((category) => (
-                    category.map((product) => (
-                        <Link href={`/products/${product.name.replace(/\s/g, '-').toLowerCase()
-                        }`} key={product.name}>
+                    products.map((category) => (
+                        category.map((product) => (
+                            <Link href={`/products/${product.name.replace(/\s/g, '-').toLowerCase()
+                                }`} key={product.name}>
                         <div className={styles.product}>
                             <img src={product.image_url}></img>
                             <h1>{product.name}</h1>
@@ -82,6 +86,7 @@ export default function ProductsUI() {
             </div>
         </div>
 
+                </Suspense>
         </>
     
     )
