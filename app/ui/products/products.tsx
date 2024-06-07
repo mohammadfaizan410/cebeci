@@ -31,7 +31,6 @@ export default function ProductsUI() {
 
 
     return (
-        <>
         <Suspense
         fallback={<h1>Loading...</h1>}
         >
@@ -86,8 +85,6 @@ export default function ProductsUI() {
             </div>
         </div>
 
-                </Suspense>
-        </>
-    
+                </Suspense>    
     )
     }
