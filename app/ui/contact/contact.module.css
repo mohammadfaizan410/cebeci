@@ -1,0 +1,100 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: start;
+    margin-top: 10px;
+    box-shadow: 0px 0px 10px 0px #f1f1f1;
+    margin: 0 auto;
+}
+
+.loadingContainer{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    box-shadow: 0px 0px 10px 0px #f1f1f1;
+    margin: 0 auto;
+    min-height: 80vh;
+}
+
+.loadingContainer h1{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.loadingContainer h3{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #f1f1f1;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.form h1{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+
+}
+
+.formGroup{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 90%;
+    margin-bottom: 20px;
+}
+
+.formGroup h3{
+    width: 100%;
+    font-weight: bold;
+    text-align: start;
+    
+}
+
+.formGroup input{
+    width: 100%;
+    padding: 10px;
+    border: 3px solid #f1f1f1;
+}
+
+.formGroup input :focus{
+    border: 3px solid #f1f1f1;
+}
+
+.formGroup div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;}
+
+.button{
+    width: 90%;
+    padding: 10px;
+    background-color: #000;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 100px;
+}
+
+.formGroup div h3:last-child{
+    color: red;
+    font-size: 12px;
+    text-align: end;
+}
