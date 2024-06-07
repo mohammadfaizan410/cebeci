@@ -157,8 +157,10 @@
 }
 
 .otherProducts div{
-    min-height: 300px;
     min-width: 200px;
+    padding: 10px;
+    background-color: whitesmoke;
+    margin-bottom: 20px;
 }
 
 

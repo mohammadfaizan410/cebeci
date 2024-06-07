@@ -14,7 +14,9 @@ export default function Categories() {
                         <img className={styles.image} src={category.products.length > 0 ? category.products[0].image_url : 'https://www.atabuttons.com/image/cache/catalog/kategoriler/stainless-accessories-ata-buttons-500x500.jpg.webp'
                         } alt="category" />
                     </Link>
+                    <div>
                     <h3>{category.CategoryName}</h3>
+                    </div>
                 </div>
            ))}
         </div>

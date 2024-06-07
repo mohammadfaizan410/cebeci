@@ -14,11 +14,12 @@
 .container{
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 80%;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     background-color: #f1f1f1;
+    margin: 0 auto;
     margin-top: 30px;
 }
 .bottomSeperator{
@@ -53,9 +54,17 @@ margin-top: 40px;
         margin-top: 0;
         align-items: center;
         justify-content: center;
+        margin: 0px auto;
     }
     .category{
         width: 100%;
+    }
+
+    .category img{
+        height: 300px;
+        object-fit: contain;
+        width: 100%;
+        border-radius: 10px 10px 10px 10px;
     }
     .heading{
         display: flex;

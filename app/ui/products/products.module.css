@@ -69,12 +69,20 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 5px;
+    background-color: whitesmoke;
     border: 1px solid #f1f1f1;
     border-radius: 10px;
     margin: 10px;
     min-width: 300px;
     max-width: 300px;
+    min-height: 200px;
+}
+
+.product h1{
+    letter-spacing: 1px;
+    max-width: 90%;
+    text-overflow: ellipsis;
 }
 
 .product:hover {
@@ -185,7 +193,7 @@ margin-top: 40px;
 
    .product {
        min-width: 200px;
-         max-width: 200px;
+       max-width: 200px;
    }
     
     .mobileCategory{
