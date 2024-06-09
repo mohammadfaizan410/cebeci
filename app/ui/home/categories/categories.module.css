@@ -1,5 +1,5 @@
 .container {
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     width: 100%;
     max-width: 100%;
@@ -8,12 +8,12 @@
     background-color: #ffffff;
     margin-top: 30px;
     gap: 30px;
-    padding: 20px 0px;
+    padding: 20px 20px;
     border-radius: 10px;
     margin: 0 auto;
     align-content: flex-start;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden; */
 }
 
 .heading{
@@ -46,9 +46,12 @@ margin-top: 40px;
 }
 
 .image{
-    width: 100%;
+    width: 400px;
+    height: auto;
     margin: 0 auto;
 }
+
+
 
 @media screen and (max-width: 900px){
     .category{

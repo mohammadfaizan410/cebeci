@@ -8,15 +8,15 @@ export default function Services(){
         <div className={styles.container}>
             <div className={styles.service}>
                 <BiGlobe className={styles.icon}  fill='teal'/>
-                <h1>Operating in 5 different cities</h1>
+                <h1>Worlwide</h1>
             </div>
             <div className={styles.service}>
                 <MdCheckCircleOutline className={styles.icon}  fill='green'/>
-                <h1>Suppliying Buttons</h1>
+                <h1>Supplly</h1>
             </div>
             <div className={styles.service}>
                 <MdTypeSpecimen className={styles.icon} />
-                <h1>Button Manufacturing</h1>
+                <h1>Manufacturing</h1>
             </div>
             <div className={styles.service}>
                 <MdSettings className={styles.icon}  fill='orange'/>
