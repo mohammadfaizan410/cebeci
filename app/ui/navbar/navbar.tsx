@@ -19,9 +19,11 @@ export default function Navbar() {
         ];
   return (
     <nav className={styles.container}>
+        <Link href="/home">
             <div className={styles.logo}>
                 <Image src="/hero.png" alt="logo" width={100}  height={100} />
             </div>
+        </Link>
         <ul className={styles.nav}>
           {
               navItems.map((item, index) => (
