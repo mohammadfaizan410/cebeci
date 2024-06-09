@@ -66,7 +66,6 @@ export default function ProductsUI() {
                 </select>
             </div>
             <div className={styles.products}>
-
                 {
                     prodCount === 0 ? <h1>No products found</h1> :
                     products.map((category) => (

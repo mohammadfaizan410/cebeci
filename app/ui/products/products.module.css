@@ -48,6 +48,7 @@
     justify-content: start;
     padding: 20px;
     height: 100%;
+    width: 100%;
 }
 
 .products {
@@ -60,7 +61,9 @@
     padding: 20px 0px;
     overflow-y: auto;
     overflow-x: auto;
-    height:70vh
+    height:70vh;
+    margin: 0 auto;
+    width: 99%;
 }
 
 
