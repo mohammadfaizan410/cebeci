@@ -27,7 +27,9 @@ export default function Categories() {
             options = {options}
         >
            {data.map((category, index) => (
-            <SplideSlide className={styles.category}>
+            <SplideSlide className={styles.category} 
+                key={index}
+            >
                     <Link href={{
                         pathname: "/products",
                         query: { categoryName: category.CategoryName }
