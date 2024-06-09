@@ -73,12 +73,10 @@ margin-top: 40px;
         margin-top: 0px;
     }
     .image{
-        height: 250px;
-        width: 100%;
-        object-fit: cover;
+       overflow: hidden;
     }
     .image img{
-        height: 250px;
+        height: auto;
         object-fit: contain;
         width: 100%;
     }

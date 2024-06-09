@@ -21,8 +21,8 @@ margin-top: 40px;
 }
 .icon{
     font-size: 100px;
-    margin-right: 10px;
-    min-width: 30px
+    min-width: 30px;
+    margin-bottom: 20px;
 }
 
 .heading{
@@ -68,5 +68,18 @@ margin-top: 40px;
         padding: 10px 20px;
         border-radius: 10px;
         background-color: #f1f1f1;
+        height: auto;
+        min-height: fit-content;
+    }
+
+    .icon{
+        font-size: 50px;
+        min-width: 30px;
+        margin-bottom: 10px;
+    }
+
+    .service h1{
+        padding-left: 10px;
+        font-size: 15px;
     }
 }

@@ -1,8 +1,11 @@
 import { Suspense } from "react";
 import ProductsUi from "../ui/products/products";
+import LoadingSkeleton from "../ui/loading/skeleton";
 export default function Products() {
     return (
-        <Suspense fallback={<h1>Loading...</h1>}>
+        <Suspense fallback={
+            <LoadingSkeleton />
+        }>
             <ProductsUi />
         </Suspense>
     );

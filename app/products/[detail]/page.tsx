@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import data from '../../../public/data.json';
 import ProductDetails from '@/app/ui/products/productDetailsPage/productDetails';
+import LoadingSkeleton from '@/app/ui/loading/skeleton';
 
 export default function ProductDetail({
     params
@@ -51,7 +52,7 @@ export default function ProductDetail({
     }, [params.detail]);
 
     if (!product) {
-        return <div>Loading</div>;
+        return <LoadingSkeleton />;
     }
 
     return (
