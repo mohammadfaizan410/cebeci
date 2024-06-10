@@ -1,12 +1,16 @@
 "use client"
 import styles from './categories.module.css';
 import Link from 'next/link'
-import data from '../../../../public/data.json';
+import dataEn from "@/locales/en/data.json";
+import dataTr from "@/locales/tr/data.json";
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
+import { useLanguage } from '@/app/languageContextProvider';
 
 
 export default function Categories() {
+    const { language } = useLanguage();
+    const data = language === 'en' ? dataEn : dataTr;
     const options = {
         type         : 'loop',
         gap          : '2rem',
@@ -18,15 +22,25 @@ export default function Categories() {
         height       : 'auto',
         perPage      : 4,
         speed : 800,
+        interval : 3000,
       };
     return (<>
-            <h1 className={styles.heading}>Top Categories</h1>
+            <h1 className={styles.heading}>
+                {language === 'en' ? 'Categories' : 'Kategoriler'}
+            </h1>
         <div className={styles.container}>
             
         <Splide 
             options = {options}
         >
-           {data.map((category, index) => (
+            {returnSplideContent(data)}
+        </Splide>
+        </div>
+    </>
+    );
+
+    function returnSplideContent(data) {
+        return data.map((category, index) => (
             <SplideSlide className={styles.category} 
                 key={index}
             >
@@ -41,10 +55,8 @@ export default function Categories() {
                     <h3>{category.CategoryName}</h3>
                     </div>
             </SplideSlide>
-           ))}
-        </Splide>
-        </div>
+        )
+        );
 
-    </>
-    );
+    }
     }

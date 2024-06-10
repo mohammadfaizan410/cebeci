@@ -1,0 +1,8 @@
+{
+    "navbar": [
+        { "href": "/home", "label": "Ana Sayfa" },
+        { "href": "/products", "label": "Ürünler" },
+        { "href": "/services", "label": "Hizmetler" },
+        { "href": "/contact", "label": "İletişim" }
+    ]
+}

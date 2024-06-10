@@ -15,6 +15,11 @@
         font-size: 30px;
         color: rgb(0, 0, 0);
         background-color: rgba(0, 0, 0, 0.05);
+        min-width: 100%;
+}
+
+.productsWrapper{
+    min-width: 100%;
 }
 
 .categoryPicker {
@@ -63,7 +68,7 @@
     overflow-x: auto;
     height:70vh;
     margin: 0 auto;
-    width: 99%;
+    min-width: 99%;
 }
 
 
@@ -85,6 +90,7 @@
 .product h1{
     letter-spacing: 1px;
     max-width: 90%;
+    min-width: 90%;
     text-overflow: ellipsis;
 }
 
@@ -98,6 +104,14 @@
     color: black;
     font-weight: bold;
     margin-bottom: 20px;
+}
+
+.categoryBtn{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    text-align: start;
 }
 
 

@@ -1,9 +1,13 @@
-"user client"
-import data from '../../../../public/data.json';
-import { useState } from 'react';
+"use client"
+import { useEffect, useState } from 'react';
 import styles from './productDetails.module.css';
 import { MdCheckBox } from 'react-icons/md';
+import { useLanguage } from '@/app/languageContextProvider';
 import Link from 'next/link';
+import { redirect } from 'next/dist/server/api-utils';
+import dataEn from "@/locales/en/data.json";
+import dataTr from "@/locales/tr/data.json";
+import { useRouter } from 'next/navigation';
 interface ProdInterface {
     name: string;
     image: string;
@@ -20,7 +24,16 @@ export default function ProductDetails({props}: {
         product: ProdInterface;
     }
 }) {
-
+    const { language } = useLanguage();
+    const data = language === 'en' ? dataEn : dataTr;
+    const [productsWithSameCategory, setProductsWithSameCategory] = useState(data.filter(category => category.CategoryName === props.product.category)[0]?.products);
+    const router = useRouter();
+    const [prevLanguage, setPrevLanguage] = useState(language);
+    useEffect(() => {
+        if (prevLanguage !== language) {
+            router.push('/products');
+        }
+    }, [language, props.product]);
     const [selectedImage, setSelectedImage] = useState(props.product.image);
     return (
         <div className={styles.container}>
@@ -58,7 +71,11 @@ export default function ProductDetails({props}: {
                 <table>
                     <thead>
                         <tr>
-                            <th colSpan={2}>Dimensions</th>
+                            <th colSpan={2}>
+                                {
+                                    language === 'en' ? 'Dimentions' : 'Ölçüler'
+                                }
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -73,13 +90,21 @@ export default function ProductDetails({props}: {
                     </tbody>
                 </table>
             </div>
-            <h2 className={styles.title}>Description</h2>
+            <h2 className={styles.title}>
+                {
+                    language === 'en' ? 'Description' : 'Açıklama'
+                }
+            </h2>
             <div className={styles.descriptions} dangerouslySetInnerHTML={
                 props.product.description ? {__html: props.product.description} : {__html: ""}}></div>
-            <h2 className={styles.title}>Other products in this category</h2>
+            <h2 className={styles.title}>
+                {
+                    language === 'en' ? 'Other Products in this Category' : 'Bu Kategorideki Diğer Ürünler'
+                }
+            </h2>
                 <div className={styles.otherProducts}>
                     {
-                        data.filter(category => category.CategoryName === props.product.category)[0].products.map((prod, index) => (
+                        productsWithSameCategory.map((prod, index) => (
                             <div key={index}>
                                 <Link href={`/products/${prod.name.replace(/\s/g, '-').toLowerCase()}`}>
                                 <img src={prod.image_url} alt="product" />

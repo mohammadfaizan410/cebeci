@@ -1,7 +1,8 @@
 "use client"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './contact.module.css'
 import Link from 'next/link';
+import { useLanguage } from '@/app/languageContextProvider';
 
 export default function Contact() {
     const [form, setForm] = useState({
@@ -9,6 +10,7 @@ export default function Contact() {
         email: '',
         message: '',
     });
+    const { language } = useLanguage();
 
     const [nameError, setNameError] = useState('');
     const [emailError, setEmailError] = useState('');
@@ -16,7 +18,12 @@ export default function Contact() {
     const [sending, setSending] = useState(false);
     const [sent, setSent] = useState(false);
     const [sendingError, setSendingError] = useState(false);
-
+    const [prevLanguage, setPrevLanguage] = useState(language);
+    useEffect(() => {
+           if(nameError !== '') setNameError(language === 'en' ? 'Name is required' : 'İsim gerekli');
+              if(emailError !== '') setEmailError(language === 'en' ? 'Email is required' : 'Email gerekli');
+                if(messageError !== '') setMessageError(language === 'en' ? 'Message is required' : 'Mesaj gerekli');
+    }, [language]);
     const handleSubmit = async () => {
         setNameError('');
         setEmailError('');
@@ -24,15 +31,21 @@ export default function Contact() {
         let hasError = false;
 
         if (form.name === '') {
-            setNameError('Name is required');
+            setNameError(
+                language === 'en' ? 'Name is required' : 'İsim gerekli'
+            );
             hasError = true;
         }
         if (form.email === '') {
-            setEmailError('Email is required');
+            setEmailError(
+                language === 'en' ? 'Email is required' : 'Email gerekli'
+            );
             hasError = true;
         }
         if (form.message === '') {
-            setMessageError('Inquiry is required');
+            setMessageError(
+                language === 'en' ? 'Message is required' : 'Mesaj gerekli'
+            );
             hasError = true;
         }
 
@@ -71,73 +84,89 @@ export default function Contact() {
 
     if(sending) return (
         <div className={styles.loadingContainer}>
-            <h1>Your Email is being sent...</h1>
+            <h1>
+                {language === 'en' ? 'Sending Email' : 'Email Gönderiliyor'}
+            </h1>
         </div>
     );
 
     if(sent) return (
         <div className={styles.loadingContainer}>
-            <h1>We have successfully received your email</h1>
+            <h1>
+                {language === 'en' ? 'Email Sent' : 'Email Gönderildi'}
+            </h1>
             <Link href="/products">
-                <h3>Browse Products</h3>
+                <h3>
+                    {language === 'en' ? 'Back to Products' : 'Ürünlere Geri Dön'}
+                </h3>
             </Link>
         </div>
     );
 
     if(sendingError) return (
         <div className={styles.loadingContainer}>
-            <h1>Failed to send email</h1>
+            <h1>
+                {language === 'en' ? 'Error Sending Email' : 'Email Gönderilirken Hata Oluştu'}
+            </h1>
         </div>
     );
 
     return (
         <div className={styles.container}>
             <div className={styles.form}>
-                <h1>Contact Us</h1>
+                <h1>
+                    {language === 'en' ? 'Contact Us' : 'Bize Ulaşın'}
+                </h1>
                 <div className={styles.formGroup}>
                     <div>
-                        <h3 className={styles.h3}>Name</h3>
+                        <h3 className={styles.h3}>
+                            {language === 'en' ? 'Name' : 'İsim'}
+                        </h3>
                         <h3 className={styles.error}>{nameError}</h3>
                     </div>
                     <input
                         type="text"
                         id="name"
                         className={styles.input}
-                        placeholder="Enter Name"
+                        placeholder={language === 'en' ? 'Enter Name' : 'İsim Girin'}
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                     />
                 </div>
                 <div className={styles.formGroup}>
                     <div>
-                        <h3 className={styles.h3}>Email</h3>
+                        <h3 className={styles.h3}>
+                            {language === 'en' ? 'Email' : 'Email'}
+                        </h3>
                         <h3 className={styles.error}>{emailError}</h3>
                     </div>
                     <input
                         type="text"
                         id="email"
                         className={styles.input}
-                        placeholder="Enter Email"
+                        placeholder={language === 'en' ? 'Enter Email' : 'Email Girin'}
                         value={form.email}
                         onChange={(e) => setForm({ ...form, email: e.target.value })}
                     />
                 </div>
                 <div className={styles.formGroup}>
                     <div>
-                        <h3 className={styles.h3}>Inquiry</h3>
+                        <h3 className={styles.h3}>
+                            {language === 'en' ? 'Inquiry' : 'Mesaj'}
+                        </h3>
                         <h3 className={styles.error}>{messageError}</h3>
                     </div>
                     <input
                         type="text"
                         id="message"
                         className={styles.input}
-                        placeholder="Enter Inquiry"
+                        placeholder={language === 'en' ? 'Enter Inquiry' : 'Mesaj Girin'}
                         value={form.message}
                         onChange={(e) => setForm({ ...form, message: e.target.value })}
                     />
                 </div>
                 <button className={styles.button} onClick={handleSubmit}>
-                    Submit
+                    {language === 'en' ? 'Send' : 'Gönder'}
                 </button>
             </div>
         </div>

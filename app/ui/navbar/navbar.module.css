@@ -44,7 +44,10 @@
     color: rgb(79, 57, 112);
     border-bottom: 2px solid rgb(79, 57, 112);
 }
+.mobileLanguageChanger{
+    display: none;
 
+}
 .mobileNav{
     display: none;
 }
@@ -52,6 +55,23 @@
 .menu{
     display: none;
 
+}
+
+.language{
+    display: flex;
+    gap: 10px;
+}
+
+.language span{
+    font-size: 17px;
+    font-weight: 500;
+    color: rgb(79, 57, 112);
+    cursor: pointer;
+}
+
+.selectedSpan{
+    color: rgb(79, 57, 112);
+    border-bottom: 2px solid rgb(79, 57, 112);
 }
 
 @media screen and (max-width: 768px){
@@ -91,6 +111,17 @@
         cursor: pointer;
     }
 
+    .mobileLanguageChanger{
+        display: flex;
+        gap: 10px;
+    }
+
+    .mobileLanguageChanger span{
+        font-size: 17px;
+        font-weight: 500;
+        color: rgb(79, 57, 112);
+        cursor: pointer;
+    }
 
     
 }

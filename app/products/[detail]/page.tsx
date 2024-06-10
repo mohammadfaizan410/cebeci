@@ -1,8 +1,10 @@
 "use client"
 import { useEffect, useState } from 'react';
-import data from '../../../public/data.json';
 import ProductDetails from '@/app/ui/products/productDetailsPage/productDetails';
 import LoadingSkeleton from '@/app/ui/loading/skeleton';
+import dataEn from "@/locales/en/data.json";
+import dataTr from "@/locales/tr/data.json";
+import { useLanguage } from '@/app/languageContextProvider';
 
 export default function ProductDetail({
     params
@@ -21,15 +23,18 @@ export default function ProductDetail({
         category: string;
         ul_product_tags: string | undefined;
     }
+    const { language } = useLanguage();
+    const data = language === 'en' ? dataEn : dataTr;
+
 
     const [product, setProduct] = useState<ProdInterface | null>(null);
-
+    console.log(decodeURIComponent(params.detail));
     useEffect(() => {
         let foundProduct: ProdInterface | null = null;
 
         data.some(category =>
             category.products.some(prod => {
-                if (prod.name.replace(/\s/g, '-').toLowerCase() === params.detail) {
+                if (prod.name.replace(/\s/g, '-').toLowerCase() === decodeURIComponent(params.detail)) {
                     foundProduct = {
                         name: prod.name,
                         image: prod.image_url,
