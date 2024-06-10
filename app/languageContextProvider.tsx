@@ -23,12 +23,12 @@ type LanguageProviderProps = {
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
     const [language, setLanguageState] = useState<string>(() => {
-        const storedLanguage = window !== undefined ?  localStorage.getItem('currentSelectedLanguage') : "tr";
+        const storedLanguage = typeof window !== "undefined" ?  localStorage.getItem('currentSelectedLanguage') : "tr";
         return storedLanguage ? storedLanguage : 'tr';
     });
 
     const setLanguage = (lang: string) => {
-        if(window !== undefined){
+        if(typeof window !== "undefined"){
             localStorage.setItem('currentSelectedLanguage', lang);
             }
         setLanguageState(lang);
@@ -36,7 +36,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
     // Optional: Use effect to update language when localStorage changes
     useEffect(() => {
-        const storedLanguage = window !== undefined ? localStorage.getItem('currentSelectedLanguage') : "tr";
+        const storedLanguage = typeof window !== "undefined" ? localStorage.getItem('currentSelectedLanguage') : "tr";
         if (storedLanguage && storedLanguage !== language) {
             setLanguageState(storedLanguage);
         }
