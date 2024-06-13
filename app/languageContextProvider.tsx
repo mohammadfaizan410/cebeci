@@ -16,34 +16,53 @@ export const useLanguage = () => {
     return context;
 };
 
-// Define the type for LanguageProvider props to include children
 type LanguageProviderProps = {
     children: React.ReactNode;
 };
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-    const [language, setLanguageState] = useState<string>(() => {
-        const storedLanguage = typeof window !== "undefined" ?  localStorage.getItem('currentSelectedLanguage') : "tr";
-        return storedLanguage ? storedLanguage : 'tr';
-    });
+    const [language, setLanguageState] = useState<string | null>(null);
+    const [loading, setLoading] = useState(true);
 
     const setLanguage = (lang: string) => {
-        if(typeof window !== "undefined"){
+        if (typeof window !== "undefined") {
             localStorage.setItem('currentSelectedLanguage', lang);
-            }
+        }
         setLanguageState(lang);
     };
 
-    // Optional: Use effect to update language when localStorage changes
     useEffect(() => {
-        const storedLanguage = typeof window !== "undefined" ? localStorage.getItem('currentSelectedLanguage') : "tr";
-        if (storedLanguage && storedLanguage !== language) {
-            setLanguageState(storedLanguage);
-        }
+        const fetchLanguage = async () => {
+            const storedLanguage = typeof window !== "undefined" ? localStorage.getItem('currentSelectedLanguage') : "tr";
+            setLanguageState(storedLanguage ? storedLanguage : 'tr');
+            setLoading(false);
+        };
+
+        fetchLanguage();
     }, []);
 
+    if (loading) {
+        return <div
+        style={{
+            width: "100%",
+            height: "100vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent : "center"
+
+        }}
+        >
+            <div style={{
+                border: "10px solid black",
+                borderRadius: "50%",
+                width: "100px",
+                height: "100px"
+            }}></div>
+        </div>;
+    }
+
     return (
-        <LanguageContext.Provider value={{ language, setLanguage }}>
+        <LanguageContext.Provider value={{ language: language || 'tr', setLanguage }}>
             {children}
         </LanguageContext.Provider>
     );

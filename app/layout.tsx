@@ -23,7 +23,6 @@ export default function RootLayout({
         <html lang="en">
             <body className={inter.className}>
                 <Providers>
-                    {/* Wrap the children with LanguageProvider */}
                     <LanguageProvider>
                         <Navbar />
                         {children}
