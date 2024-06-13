@@ -19,7 +19,7 @@ export default function Navbar() {
         <nav className={styles.container}>
             <Link href="/home">
                 <div className={styles.logo}>
-                    <Image src="/hero.png" alt="logo" width={100} height={100} />
+                    <Image src="/hero-removebg-preview.png" alt="logo" width={100} height={100} />
                 </div>
             </Link>
             <ul className={styles.nav}>

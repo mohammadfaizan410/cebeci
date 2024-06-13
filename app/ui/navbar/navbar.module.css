@@ -4,14 +4,16 @@
     display: flex;
     padding: 0px 50px;
     justify-content: space-between;
-    max-width: 100%;
-    width: 100%;
+    max-width: 97%;
+    width: 90%;
     border-bottom: 2px solid rgba(79, 57, 112, 0.2);
-    background-color: white;
-    top: 0;
+    background-color: rgba(256,256,256,0.9);
+    top: 10px;
     z-index: 1000;
     min-height: 100px;
     align-items: center;
+    margin: 0 auto;
+    border-radius: 20px;
 }
 
 .nav{
@@ -20,7 +22,6 @@
     flex: 2;
     gap: 50px;
     justify-content: end;
-    background-color: white;
 }
 
 .logo{

@@ -5,6 +5,7 @@ import LoadingSkeleton from '@/app/ui/loading/skeleton';
 import dataEn from "@/locales/en/data.json";
 import dataTr from "@/locales/tr/data.json";
 import { useLanguage } from '@/app/languageContextProvider';
+import { useRouter } from 'next/navigation';
 
 export default function ProductDetail({
     params
@@ -25,6 +26,13 @@ export default function ProductDetail({
     }
     const { language } = useLanguage();
     const data = language === 'en' ? dataEn : dataTr;
+    const [prevLanguage, setPrevLanguage] = useState(language);
+    const router = useRouter();
+    useEffect(() => {
+        if (prevLanguage !== language) {
+            router.push('/products');
+        }
+    }, [language]);
 
 
     const [product, setProduct] = useState<ProdInterface | null>(null);
